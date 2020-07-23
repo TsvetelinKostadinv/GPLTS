@@ -6,6 +6,11 @@ package com.gplts.util.todo;
 
 
 /**
+ * 
+ * Utility interface for postponing implementation details
+ * Best used with <br>
+ * <code>import static com.gplts.util.todo.ToDO.*</code>
+ * 
  * @author Tsvetelin
  *
  */
