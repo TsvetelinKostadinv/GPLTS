@@ -248,6 +248,54 @@ public class Either < L , R >
     }
     
     /**
+     * Runs the action if this is a left value
+     * 
+     * @param action
+     * @return the same either( ***referentially*** )
+     */
+    public Either< L , R > ifLeft ( final Runnable action )
+    {
+        if ( this.isLeft() ) action.run();
+        return this;
+    }
+    
+    /**
+     * Runs the action if this is a right value
+     * 
+     * @param action
+     * @return the same either( ***referentially*** )
+     */
+    public Either< L , R > ifRight ( final Runnable action )
+    {
+        if ( this.isRight() ) action.run();
+        return this;
+    }
+    
+    /**
+     * Gets the value if this is a left value
+     * 
+     * @param supplier
+     * @return a optional of the result if the either is left, empty one otherwise
+     */
+    public <T> Optional<T> ifLeft ( Supplier<T> supplier )
+    {
+        if ( this.isLeft() ) return Optional.ofNullable( supplier.get() );
+        return Optional.empty();
+    }
+    
+    /**
+     * Runs the action if this is a right value
+     * 
+     * @param action
+     * @return the same either( ***referentially*** )
+     */
+    public <T> Optional<T> ifRight ( Supplier<T> supplier  )
+    {
+        if ( this.isRight() ) return Optional.ofNullable( supplier.get() );
+        return Optional.empty();
+    }
+    
+    /**
      * 
      * @return true if the right value is present, false otherwise
      */
@@ -316,7 +364,7 @@ public class Either < L , R >
     }
     
     /**
-     * Folds the either to a single value. 
+     * Folds the either to a single value.
      * NOTE: The functions may or may not produce a value.
      * 
      * @param <T>
