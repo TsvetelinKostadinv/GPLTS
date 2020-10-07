@@ -1,8 +1,8 @@
 language: java
-install: gradle wrapper --gradle-version 6.2.2
+install: skip
 
 script:
-  - ./gradlew build --scan -s
+  - ./gradlew clean build test
   
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
