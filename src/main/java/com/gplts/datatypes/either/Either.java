@@ -248,6 +248,15 @@ public class Either < L , R >
     }
     
     /**
+     * 
+     * @return true if the right value is present, false otherwise
+     */
+    public boolean isRight ()
+    {
+        return this.right.isPresent();
+    }
+
+    /**
      * Runs the action if this is a left value
      * 
      * @param action
@@ -284,24 +293,15 @@ public class Either < L , R >
     }
     
     /**
-     * Runs the action if this is a right value
+     * Gets the value if this is a left value
      * 
-     * @param action
-     * @return the same either( ***referentially*** )
+     * @param supplier
+     * @return a optional of the result if the either is left, empty one otherwise
      */
     public <T> Optional<T> ifRight ( Supplier<T> supplier  )
     {
         if ( this.isRight() ) return Optional.ofNullable( supplier.get() );
         return Optional.empty();
-    }
-    
-    /**
-     * 
-     * @return true if the right value is present, false otherwise
-     */
-    public boolean isRight ()
-    {
-        return this.right.isPresent();
     }
     
     /**
