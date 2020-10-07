@@ -1,8 +1,8 @@
 language: java
 jdk: openjdk11
 
-install: ./gradlew wrapper --gradle-version 6.6.1
-script: ./gradlew clean build test
+install: skip
+script: ./gradlew build
   
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
